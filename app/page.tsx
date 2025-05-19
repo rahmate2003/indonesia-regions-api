@@ -2,7 +2,6 @@ import Link from "next/link"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Metadata } from "next"
 
 export default function Home() {
   return (
@@ -10,20 +9,16 @@ export default function Home() {
       <div className="max-w-5xl w-full">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4">Indonesia Regional API</h1>
-          <p className="text-xl text-muted-foreground mb-4">
-            API lengkap untuk 38 provinsi, kota/kabupaten, kecamatan, dan desa/kelurahan di Indonesia
-          </p>
-          <p className="text-lg mb-6">
-            Akses data wilayah Indonesia yang terstruktur, lengkap, dan diperbarui secara berkala. 
-            Ideal untuk aplikasi e-commerce, pendidikan, pemerintahan, dan layanan berbasis lokasi.
+          <p className="text-xl text-muted-foreground">
+          API lengkap untuk data wilayah administratif Indonesia, meliputi 38 provinsi, kota/kabupaten, kecamatan, dan desa/kelurahan.
           </p>
           <div className="flex justify-center gap-4 mt-6">
-            <Button asChild size="lg">
+            <Button asChild>
               <Link href="/docs">Dokumentasi API</Link>
             </Button>
-            <Button variant="outline" asChild size="lg">
+            <Button variant="outline" asChild>
               <Link
-                href="https://github.com/yourusername/indonesia-regional-api"
+                href="https://github.com/rahmate2003/indonesia-regions-api"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -32,68 +27,166 @@ export default function Home() {
             </Button>
           </div>
         </div>
-        
-        {/* Tambahkan section fitur utama */}
-        <section className="my-12">
-          <h2 className="text-2xl font-bold mb-6 text-center">Fitur Utama</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Data Lengkap</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>Mencakup 38 provinsi, ratusan kota/kabupaten, ribuan kecamatan, dan puluhan ribu desa/kelurahan di seluruh Indonesia.</p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Performa Tinggi</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>Dioptimalkan dengan static generation dan caching untuk respons cepat dan pengalaman pengguna yang lancar.</p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Mudah Digunakan</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>API endpoint yang intuitif dengan format respons JSON yang konsisten dan dokumentasi lengkap.</p>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-        
-        {/* Tambahkan contoh penggunaan */}
-        <section className="my-12">
-          <h2 className="text-2xl font-bold mb-6 text-center">Contoh Penggunaan</h2>
+
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold mb-4">API Endpoints</h2>
           <Card>
             <CardContent className="p-6">
-              <pre className="bg-muted p-4 rounded-md overflow-x-auto">
-                <code>{`// Mendapatkan semua provinsi
-fetch('/api/provinces')
-  .then(response => response.json())
-  .then(data => console.log(data));
-
-// Mendapatkan kota/kabupaten berdasarkan ID provinsi
-fetch('/api/cities/11')
-  .then(response => response.json())
-  .then(data => console.log(data));`}</code>
-              </pre>
+              <ul className="space-y-2">
+                <li>
+                  <code className="bg-muted p-1 rounded">/api/provinces</code> - Get all provinces
+                </li>
+                <li>
+                  <code className="bg-muted p-1 rounded">/api/cities/{"{provinceId}"}</code> - Get cities by province ID
+                </li>
+                <li>
+                  <code className="bg-muted p-1 rounded">/api/districts/{"{cityId}"}</code> - Get districts by city ID
+                </li>
+                <li>
+                  <code className="bg-muted p-1 rounded">/api/villages/{"{districtId}"}</code> - Get villages by
+                  district ID
+                </li>
+              </ul>
             </CardContent>
           </Card>
-        </section>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-bold mb-4">Usage Examples</h2>
+          <Tabs defaultValue="fetch">
+            <TabsList className="grid w-full grid-cols-3">
+              <TabsTrigger value="fetch">Fetch API</TabsTrigger>
+              <TabsTrigger value="axios">Axios</TabsTrigger>
+              <TabsTrigger value="jquery">jQuery</TabsTrigger>
+            </TabsList>
+            <TabsContent value="fetch" className="mt-4">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Fetch API Example</CardTitle>
+                  <CardDescription>Using the native Fetch API</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <pre className="bg-muted p-4 rounded-md overflow-x-auto">
+                    <code>{`// Get all provinces
+fetch('/api/provinces')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
+
+// Get cities by province ID
+fetch('/api/cities/11')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
+
+// Get districts by city ID
+fetch('/api/districts/1101')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
+
+// Get villages by district ID
+fetch('/api/villages/1101010')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));`}</code>
+                  </pre>
+                </CardContent>
+              </Card>
+            </TabsContent>
+            <TabsContent value="axios" className="mt-4">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Axios Example</CardTitle>
+                  <CardDescription>Using Axios HTTP client</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <pre className="bg-muted p-4 rounded-md overflow-x-auto">
+                    <code>{`// Get all provinces
+axios.get('/api/provinces')
+  .then(response => console.log(response.data))
+  .catch(error => console.error('Error:', error));
+
+// Get cities by province ID
+axios.get('/api/cities/11')
+  .then(response => console.log(response.data))
+  .catch(error => console.error('Error:', error));
+
+// Get districts by city ID
+axios.get('/api/districts/1101')
+  .then(response => console.log(response.data))
+  .catch(error => console.error('Error:', error));
+
+// Get villages by district ID
+axios.get('/api/villages/1101010')
+  .then(response => console.log(response.data))
+  .catch(error => console.error('Error:', error));`}</code>
+                  </pre>
+                </CardContent>
+              </Card>
+            </TabsContent>
+            <TabsContent value="jquery" className="mt-4">
+              <Card>
+                <CardHeader>
+                  <CardTitle>jQuery Example</CardTitle>
+                  <CardDescription>Using jQuery AJAX</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <pre className="bg-muted p-4 rounded-md overflow-x-auto">
+                    <code>{`// Get all provinces
+$.ajax({
+  url: '/api/provinces',
+  method: 'GET',
+  success: function(data) {
+    console.log(data);
+  },
+  error: function(error) {
+    console.error('Error:', error);
+  }
+});
+
+// Get cities by province ID
+$.ajax({
+  url: '/api/cities/11',
+  method: 'GET',
+  success: function(data) {
+    console.log(data);
+  },
+  error: function(error) {
+    console.error('Error:', error);
+  }
+});
+
+// Get districts by city ID
+$.ajax({
+  url: '/api/districts/1101',
+  method: 'GET',
+  success: function(data) {
+    console.log(data);
+  },
+  error: function(error) {
+    console.error('Error:', error);
+  }
+});
+
+// Get villages by district ID
+$.ajax({
+  url: '/api/villages/1101010',
+  method: 'GET',
+  success: function(data) {
+    console.log(data);
+  },
+  error: function(error) {
+    console.error('Error:', error);
+  }
+});`}</code>
+                  </pre>
+                </CardContent>
+              </Card>
+            </TabsContent>
+          </Tabs>
+        </div>
       </div>
     </main>
   )
 }
-
-// Tambahkan structured data untuk SEO
-export function generateMetadata(): Metadata {
-  return {
-    other: {
-      'google-site-verification': 'YOUR-VERIFICATION-CODE',
-    },
-  }
-}
-
