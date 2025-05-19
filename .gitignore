@@ -9,7 +9,8 @@
 
 # production
 /build
-
+public/BingSiteAuth.xml
+public/googlea6a8a6a578c073ce.html
 # debug
 npm-debug.log*
 yarn-debug.log*

@@ -20,33 +20,48 @@ body {
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
+    
+    /* Merah Indonesia */
+    --primary: 0 100% 40%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
+    
+    /* Abu-abu dengan sedikit merah */
+    --secondary: 0 15% 96.1%;
     --secondary-foreground: 0 0% 9%;
+    
     --muted: 0 0% 96.1%;
     --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
+    
+    /* Aksen merah muda */
+    --accent: 0 80% 96.1%;
+    --accent-foreground: 0 100% 30%;
+    
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    
+    /* Border dengan sedikit merah */
+    --border: 0 10% 89.8%;
+    --input: 0 10% 89.8%;
+    --ring: 0 100% 40%;
+    
+    /* Warna chart dengan tema Indonesia */
+    --chart-1: 0 100% 40%; /* Merah */
+    --chart-2: 0 0% 95%; /* Putih keabu-abuan */
+    --chart-3: 25 100% 50%; /* Oranye/Jingga */
+    --chart-4: 43 100% 50%; /* Kuning */
+    --chart-5: 120 60% 40%; /* Hijau */
+    
     --radius: 0.5rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Sidebar dengan tema Indonesia */
+    --sidebar-background: 0 15% 98%;
+    --sidebar-foreground: 0 0% 26.1%;
+    --sidebar-primary: 0 100% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 80% 95.9%;
+    --sidebar-accent-foreground: 0 100% 30%;
+    --sidebar-border: 0 15% 91%;
+    --sidebar-ring: 0 100% 40%;
   }
   .dark {
     --background: 0 0% 3.9%;
@@ -55,32 +70,45 @@ body {
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
+    
+    /* Merah Indonesia (lebih terang untuk dark mode) */
+    --primary: 0 100% 60%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Abu-abu dengan sedikit merah */
+    --secondary: 0 15% 14.9%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
+    
+    --muted: 0 10% 14.9%;
     --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
+    
+    /* Aksen merah tua */
+    --accent: 0 50% 14.9%;
+    --accent-foreground: 0 100% 70%;
+    
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    
+    --border: 0 15% 14.9%;
+    --input: 0 15% 14.9%;
+    --ring: 0 100% 60%;
+    
+    /* Warna chart dengan tema Indonesia untuk dark mode */
+    --chart-1: 0 100% 60%; /* Merah */
+    --chart-2: 0 0% 80%; /* Putih keabu-abuan */
+    --chart-3: 25 90% 55%; /* Oranye/Jingga */
+    --chart-4: 43 90% 55%; /* Kuning */
+    --chart-5: 120 50% 45%; /* Hijau */
+    
+    /* Sidebar dengan tema Indonesia untuk dark mode */
+    --sidebar-background: 0 15% 10%;
+    --sidebar-foreground: 0 10% 95.9%;
+    --sidebar-primary: 0 100% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 0 30% 15.9%;
+    --sidebar-accent-foreground: 0 100% 90%;
+    --sidebar-border: 0 20% 15.9%;
+    --sidebar-ring: 0 100% 60%;
   }
 }
 
@@ -92,3 +120,4 @@ body {
     @apply bg-background text-foreground;
   }
 }
+

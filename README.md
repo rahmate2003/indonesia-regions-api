@@ -2,7 +2,7 @@
 
 API lengkap untuk data wilayah administratif Indonesia, meliputi 38 provinsi, kota/kabupaten, kecamatan, dan desa/kelurahan.
 
-![Indonesia Regional API](https://indonesia-regions-api.vercel.app/api-preview.png)
+![Indonesia Regional API](https://api-regional-indonesia.vercel.app/api-preview.png)
 
 ## 🌟 Fitur Utama
 
@@ -163,12 +163,12 @@ Contoh Respons:
 
 ```javascript
 // Mendapatkan semua provinsi
-fetch("https://indonesia-regions-api.vercel.app/api/provinces")
+fetch("https://api-regional-indonesia.vercel.app/api/provinces")
   .then((response) => response.json())
   .then((data) => console.log(data));
 
 // Mendapatkan kota/kabupaten berdasarkan ID provinsi
-fetch("https://indonesia-regions-api.vercel.app/api/cities/11")
+fetch("https://api-regional-indonesia.vercel.app/api/cities/11")
   .then((response) => response.json())
   .then((data) => console.log(data));
 ```
@@ -178,12 +178,12 @@ fetch("https://indonesia-regions-api.vercel.app/api/cities/11")
 ```javascript
 // Mendapatkan semua provinsi
 axios
-  .get("https://indonesia-regions-api.vercel.app/api/provinces")
+  .get("https://api-regional-indonesia.vercel.app/api/provinces")
   .then((response) => console.log(response.data));
 
 // Mendapatkan kota/kabupaten berdasarkan ID provinsi
 axios
-  .get("https://indonesia-regions-api.vercel.app/api/cities/11")
+  .get("https://api-regional-indonesia.vercel.app/api/cities/11")
   .then((response) => console.log(response.data));
 ```
 

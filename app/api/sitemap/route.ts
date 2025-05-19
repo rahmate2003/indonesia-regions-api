@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 import { getProvinces, getCities, getDistricts } from "@/lib/data"
 
 export async function GET() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://indonesia-regions-api.vercel.app'
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://api-regional-indonesia.vercel.app'
   
   // Dapatkan semua data untuk sitemap
   const provinces = getProvinces()
