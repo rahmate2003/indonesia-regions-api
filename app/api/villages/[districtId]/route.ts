@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { getVillagesByDistrictId, getDistrictById } from "@/lib/data"
+import { getVillagesByDistrictId, getDistricts } from "@/lib/data"
 
 export const dynamic = "force-static"
 export const revalidate = false
@@ -9,7 +9,7 @@ export async function GET(request: Request, { params }: { params: { districtId: 
     const { districtId } = params
 
     // Check if district exists
-    const district = getDistrictById(districtId)
+    const district = getDistricts().find(d => d.id === districtId)
     if (!district) {
       return NextResponse.json(
         {
@@ -46,8 +46,10 @@ export async function GET(request: Request, { params }: { params: { districtId: 
 
 // Generate static paths for all districts
 export function generateStaticParams() {
-  const districts = getDistrictById()
+  const districts = getDistricts() // Gunakan getDistricts() bukan getDistrictById()
   return districts.map((district) => ({
     districtId: district.id,
   }))
 }
+
+

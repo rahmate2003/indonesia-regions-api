@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { getDistrictsByCityId, getCityById } from "@/lib/data"
+import { getDistrictsByCityId, getCityById, getCities } from "@/lib/data"
 
 export const dynamic = "force-static"
 export const revalidate = false
@@ -46,8 +46,9 @@ export async function GET(request: Request, { params }: { params: { cityId: stri
 
 // Generate static paths for all cities
 export function generateStaticParams() {
-  const cities = getCityById()
+  const cities = getCities()
   return cities.map((city) => ({
     cityId: city.id,
   }))
 }
+
