@@ -9,7 +9,6 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url)
     const sort = searchParams.get('sort')
     
-    // Use the appropriate function based on sort parameter
     const provinces = sort === 'name' 
       ? getSortedProvincesByName() 
       : getProvinces()
@@ -17,6 +16,7 @@ export async function GET(request: Request) {
     return NextResponse.json(
       {
         status: true,
+        statusCode: 200,
         message: "Provinces retrieved successfully",
         data: provinces,
       },
@@ -32,6 +32,7 @@ export async function GET(request: Request) {
     return NextResponse.json(
       {
         status: false,
+        statusCode: 500,
         message: "Failed to retrieve provinces",
         data: null,
       },

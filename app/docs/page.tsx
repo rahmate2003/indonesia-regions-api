@@ -71,6 +71,7 @@ export default function DocsPage() {
                   <pre className="bg-muted p-4 rounded-md overflow-x-auto mt-2">
                     <code>{`{
   "status": true,
+  "statusCode": 200,
   "message": "Provinces retrieved successfully",
   "data": [
     {
@@ -146,6 +147,7 @@ export default function DocsPage() {
                   <pre className="bg-muted p-4 rounded-md overflow-x-auto mt-2">
                     <code>{`{
   "status": true,
+  "statusCode": 200,
   "message": "Cities in province Aceh retrieved successfully",
   "data": [
     {
@@ -223,6 +225,7 @@ export default function DocsPage() {
                   <pre className="bg-muted p-4 rounded-md overflow-x-auto mt-2">
                     <code>{`{
   "status": true,
+  "statusCode": 200,
   "message": "Districts in city Kabupaten Simeulue retrieved successfully",
   "data": [
     {
@@ -300,6 +303,7 @@ export default function DocsPage() {
                   <pre className="bg-muted p-4 rounded-md overflow-x-auto mt-2">
                     <code>{`{
   "status": true,
+  "statusCode": 200,
   "message": "Villages in district Teupah Selatan retrieved successfully",
   "data": [
     {
@@ -379,6 +383,7 @@ export default function DocsPage() {
               <pre className="bg-muted p-4 rounded-md overflow-x-auto">
                 <code>{`{
   "status": false,
+  "statusCode": 404,
   "message": "Province with ID 999 not found",
   "data": null
 }`}</code>

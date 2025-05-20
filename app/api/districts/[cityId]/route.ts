@@ -21,6 +21,7 @@ export async function GET(request: Request, { params }: { params: { cityId: stri
       return NextResponse.json(
         {
           status: false,
+          statusCode: 404,
           message: `City with ID ${cityId} not found`,
           data: null,
         },
@@ -36,6 +37,7 @@ export async function GET(request: Request, { params }: { params: { cityId: stri
     return NextResponse.json(
       {
         status: true,
+        statusCode: 200,
         message: `Districts in city ${city.name} retrieved successfully`,
         data: districts,
       },
@@ -51,6 +53,7 @@ export async function GET(request: Request, { params }: { params: { cityId: stri
     return NextResponse.json(
       {
         status: false,
+        statusCode: 500,
         message: "Failed to retrieve districts",
         data: null,
       },

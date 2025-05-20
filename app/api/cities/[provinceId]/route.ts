@@ -20,6 +20,7 @@ export async function GET(request: Request, { params }: { params: { provinceId: 
       return NextResponse.json(
         {
           status: false,
+          statusCode: 404,
           message: `Province with ID ${provinceId} not found`,
           data: null,
         },
@@ -35,6 +36,7 @@ export async function GET(request: Request, { params }: { params: { provinceId: 
     return NextResponse.json(
       {
         status: true,
+        statusCode: 200,
         message: `Cities in province ${province.name} retrieved successfully`,
         data: cities,
       },
@@ -50,6 +52,7 @@ export async function GET(request: Request, { params }: { params: { provinceId: 
     return NextResponse.json(
       {
         status: false,
+        statusCode: 500,
         message: "Failed to retrieve cities",
         data: null,
       },
