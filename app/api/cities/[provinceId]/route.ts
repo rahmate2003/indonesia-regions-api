@@ -1,5 +1,10 @@
 import { NextResponse } from "next/server"
-import { getCitiesByProvinceId, getProvinces } from "@/lib/data"
+import { 
+  getCitiesByProvinceId, 
+  getProvinceById, 
+  getProvinces, 
+  getSortedCitiesByProvinceId 
+} from "@/lib/data"
 
 export const dynamic = "force-static"
 export const revalidate = false
@@ -7,8 +12,10 @@ export const revalidate = false
 export async function GET(request: Request, { params }: { params: { provinceId: string } }) {
   try {
     const { provinceId } = params
+    const { searchParams } = new URL(request.url)
+    const sort = searchParams.get('sort')
 
-    const province = getProvinces().find(p => p.id === provinceId)
+    const province = getProvinceById(provinceId)
     if (!province) {
       return NextResponse.json(
         {
@@ -20,7 +27,10 @@ export async function GET(request: Request, { params }: { params: { provinceId: 
       )
     }
 
-    const cities = getCitiesByProvinceId(provinceId)
+    // Use the appropriate function based on sort parameter
+    const cities = sort === 'name' 
+      ? getSortedCitiesByProvinceId(provinceId) 
+      : getCitiesByProvinceId(provinceId)
 
     return NextResponse.json(
       {

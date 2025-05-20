@@ -1,5 +1,10 @@
 import { NextResponse } from "next/server"
-import { getDistrictsByCityId, getCityById, getCities } from "@/lib/data"
+import { 
+  getDistrictsByCityId, 
+  getCityById, 
+  getCities, 
+  getSortedDistrictsByCityId 
+} from "@/lib/data"
 
 export const dynamic = "force-static"
 export const revalidate = false
@@ -7,6 +12,8 @@ export const revalidate = false
 export async function GET(request: Request, { params }: { params: { cityId: string } }) {
   try {
     const { cityId } = params
+    const { searchParams } = new URL(request.url)
+    const sort = searchParams.get('sort')
 
     // Check if city exists
     const city = getCityById(cityId)
@@ -21,7 +28,10 @@ export async function GET(request: Request, { params }: { params: { cityId: stri
       )
     }
 
-    const districts = getDistrictsByCityId(cityId)
+    // Use the appropriate function based on sort parameter
+    const districts = sort === 'name' 
+      ? getSortedDistrictsByCityId(cityId) 
+      : getDistrictsByCityId(cityId)
 
     return NextResponse.json(
       {
@@ -29,7 +39,12 @@ export async function GET(request: Request, { params }: { params: { cityId: stri
         message: `Districts in city ${city.name} retrieved successfully`,
         data: districts,
       },
-      { status: 200 },
+      { 
+        status: 200,
+        headers: {
+          'Cache-Control': 'public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800'
+        }
+      }
     )
   } catch (error) {
     console.error("Error fetching districts:", error)
@@ -51,4 +66,7 @@ export function generateStaticParams() {
     cityId: city.id,
   }))
 }
+
+
+
 

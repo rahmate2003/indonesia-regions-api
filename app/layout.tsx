@@ -48,6 +48,15 @@ export const metadata: Metadata = {
       "en-US": "/",
     },
   },
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+    other: {
+      rel: 'icon',
+      url: '/favicon.svg',
+    },
+  },
   openGraph: {
     title: "Indonesia Regional API | Data 38 Provinsi",
     description: "API lengkap untuk data wilayah administratif Indonesia meliputi provinsi, kota/kabupaten, kecamatan, dan desa/kelurahan.",
@@ -111,6 +120,7 @@ export default function RootLayout({
     </html>
   )
 }
+
 
 
 

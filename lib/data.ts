@@ -50,6 +50,14 @@ export function getProvinces(): Province[] {
   return provincesCache
 }
 
+// Get sorted provinces by name
+export function getSortedProvincesByName(): Province[] {
+  const provinces = getProvinces()
+  return [...provinces].sort((a, b) => 
+    a.name.toLowerCase().localeCompare(b.name.toLowerCase(), 'id')
+  )
+}
+
 // Get all cities
 export function getCities(): City[] {
   if (!citiesCache) {
@@ -62,6 +70,14 @@ export function getCities(): City[] {
 export function getCitiesByProvinceId(provinceId: string): City[] {
   const cities = getCities()
   return cities.filter((city) => city.provinceId === provinceId)
+}
+
+// Get sorted cities by province ID and name
+export function getSortedCitiesByProvinceId(provinceId: string): City[] {
+  const cities = getCitiesByProvinceId(provinceId)
+  return [...cities].sort((a, b) => 
+    a.name.toLowerCase().localeCompare(b.name.toLowerCase(), 'id')
+  )
 }
 
 // Get all districts
@@ -78,6 +94,14 @@ export function getDistrictsByCityId(cityId: string): District[] {
   return districts.filter((district) => district.cityId === cityId)
 }
 
+// Get sorted districts by city ID and name
+export function getSortedDistrictsByCityId(cityId: string): District[] {
+  const districts = getDistrictsByCityId(cityId)
+  return [...districts].sort((a, b) => 
+    a.name.toLowerCase().localeCompare(b.name.toLowerCase(), 'id')
+  )
+}
+
 // Get all villages
 export function getVillages(): Village[] {
   if (!villagesCache) {
@@ -92,6 +116,14 @@ export function getVillagesByDistrictId(districtId: string): Village[] {
   return villages.filter((village) => village.districtId === districtId)
 }
 
+// Get sorted villages by district ID and name
+export function getSortedVillagesByDistrictId(districtId: string): Village[] {
+  const villages = getVillagesByDistrictId(districtId)
+  return [...villages].sort((a, b) => 
+    a.name.toLowerCase().localeCompare(b.name.toLowerCase(), 'id')
+  )
+}
+
 // Get province by ID
 export function getProvinceById(id: string): Province | undefined {
   const provinces = getProvinces()
@@ -99,9 +131,9 @@ export function getProvinceById(id: string): Province | undefined {
 }
 
 // Get city by ID
-export function getCityById(id: string): City | undefined {
+export function getCityById(cityId: string): City | undefined {
   const cities = getCities()
-  return cities.find((city) => city.id === id)
+  return cities.find((city) => city.id === cityId)
 }
 
 // Get district by ID
@@ -115,3 +147,6 @@ export function getVillageById(id: string): Village | undefined {
   const villages = getVillages()
   return villages.find((village) => village.id === id)
 }
+
+
+

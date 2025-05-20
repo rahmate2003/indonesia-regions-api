@@ -1,12 +1,18 @@
 import { NextResponse } from "next/server"
-import { getProvinces } from "@/lib/data"
+import { getProvinces, getSortedProvincesByName } from "@/lib/data"
 
 export const dynamic = "force-static"
 export const revalidate = false
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
-    const provinces = getProvinces()
+    const { searchParams } = new URL(request.url)
+    const sort = searchParams.get('sort')
+    
+    // Use the appropriate function based on sort parameter
+    const provinces = sort === 'name' 
+      ? getSortedProvincesByName() 
+      : getProvinces()
 
     return NextResponse.json(
       {
@@ -14,7 +20,12 @@ export async function GET() {
         message: "Provinces retrieved successfully",
         data: provinces,
       },
-      { status: 200 },
+      { 
+        status: 200,
+        headers: {
+          'Cache-Control': 'public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800'
+        }
+      }
     )
   } catch (error) {
     console.error("Error fetching provinces:", error)
@@ -28,3 +39,7 @@ export async function GET() {
     )
   }
 }
+
+
+
+

@@ -6,17 +6,15 @@ API lengkap untuk data wilayah administratif Indonesia, meliputi 38 provinsi, ko
 
 ## 🌟 Fitur Utama
 
-- **Data Lengkap**: Mencakup 38 provinsi, ratusan kota/kabupaten, ribuan kecamatan, dan puluhan ribu desa/kelurahan di seluruh Indonesia.
-- **Performa Tinggi**: Dioptimalkan dengan static generation dan caching untuk respons cepat dan pengalaman pengguna yang lancar.
-- **Mudah Digunakan**: API endpoint yang intuitif dengan format respons JSON yang konsisten dan dokumentasi lengkap.
-- **Gratis dan Terbuka**: Dapat digunakan untuk proyek komersial maupun non-komersial tanpa biaya.
-- **Selalu Diperbarui**: Data diperbarui secara berkala untuk memastikan akurasi informasi.
+- Data lengkap 38 provinsi, 514 kota/kabupaten, 7.201 kecamatan, dan 83.436 desa/kelurahan
+- API RESTful dengan format JSON yang konsisten
+- Dokumentasi lengkap dan contoh penggunaan
+- Dioptimalkan untuk kecepatan dan keandalan
+- Mendukung sorting data berdasarkan nama
 
 ## 📚 Dokumentasi API
 
 ### Format Respons
-
-Semua endpoint API mengembalikan respons dalam format JSON dengan struktur yang konsisten:
 
 ```json
 {
@@ -32,6 +30,7 @@ Semua endpoint API mengembalikan respons dalam format JSON dengan struktur yang 
 
 ```
 GET /api/provinces
+GET /api/provinces?sort=name  # Untuk mengurutkan berdasarkan nama
 ```
 
 Contoh Respons:
@@ -77,6 +76,7 @@ Contoh Respons:
 
 ```
 GET /api/cities/{provinceId}
+GET /api/cities/{provinceId}?sort=name  # Untuk mengurutkan berdasarkan nama
 ```
 
 Contoh Respons:
@@ -105,6 +105,7 @@ Contoh Respons:
 
 ```
 GET /api/districts/{cityId}
+GET /api/districts/{cityId}?sort=name  # Untuk mengurutkan berdasarkan nama
 ```
 
 Contoh Respons:
@@ -133,6 +134,7 @@ Contoh Respons:
 
 ```
 GET /api/villages/{districtId}
+GET /api/villages/{districtId}?sort=name  # Untuk mengurutkan berdasarkan nama
 ```
 
 Contoh Respons:
